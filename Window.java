@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
+//// The Window class, responsible for creating the game window and handling game rendering and interaction.
 public class Window extends Canvas implements Runnable, MouseListener, ImageObserver {
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +29,7 @@ public class Window extends Canvas implements Runnable, MouseListener, ImageObse
 	ArrayList<Card> cards = new ArrayList<Card>();
 	int cols = 5;
 	int rows = 4;
-
+	// Constructor: sets up the game window and initializes game components
 	public Window() {
 		// setting up the program
 		JFrame frame = new JFrame("Memory Game");
@@ -93,7 +94,7 @@ public class Window extends Canvas implements Runnable, MouseListener, ImageObse
 	public void render() {
 		graphics.clearRect(0, 0, WIDTH, HEIGHT);
 	}
-
+	// The game loop: runs continuously to update and render the game
 	@Override
 	public void run() {
 		if (bs == null) {
@@ -125,7 +126,7 @@ public class Window extends Canvas implements Runnable, MouseListener, ImageObse
 			}
 		}
 	}
-//checking states
+	//Method to handle actions based on mouse interaction and game state
 	private void handleAction(Card c) {
 		String s = state.getState();
 
@@ -219,7 +220,7 @@ public class Window extends Canvas implements Runnable, MouseListener, ImageObse
 		}
 	}
 
-	// completely unused and worthless. filthy nonsense functions.
+	
 	@Override
 	public void mouseEntered(MouseEvent e) {
 	}
