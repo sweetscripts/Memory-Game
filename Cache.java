@@ -7,13 +7,16 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class Cache {
-
+	
+	//Directory where images are stored
 	private static final String IMAGE_DIR = "src/images/";
+	//List to store loaded images
 	private static ArrayList<Image> image = new ArrayList<Image>();
 
 	// constructor for Cache class
 	public Cache() {
 	}
+	//Private method to load an image from a file
 	private Image loadImage(String img) {
 		try {
 			System.out.println("Image loaded fine.");
@@ -24,25 +27,27 @@ public class Cache {
 			return null;
 		}
 	}
-
+	
+	//Method to return the number of images loaded
 	public int length() {
 		return image.size();
 	}
-
+	//Method to add an image to the cache
 	public void insertImage(String filename) {
 		image.add(loadImage(filename));
 	}
 
-	// randomize cards
+	// // Method to shuffle the images for randomizing card placement
 	public int[] shuffle() {
 		int[] shuffleArray = new int[image.size() * 2];
 		int temp, chosen;
-
+		// Initializing the shuffle array with image indices
 		for (int x = 1; x < shuffleArray.length; x++) {
 			shuffleArray[x - 1] = x % image.size();
 		}
 		for (int w = 0; w < shuffleArray.length; w++) {
 		}
+		//Shuffling the array
 		for (int y = shuffleArray.length - 1; y > -1; y--) {
 			Random rand = new Random();
 			chosen = rand.nextInt(y + 1);
@@ -54,7 +59,7 @@ public class Cache {
 		}
 		return shuffleArray;
 	}
-//getting image
+	// Method to get an image from the cache by index
 	public Image getImage(int index) {
 		if (image.size() > index) {
 			return image.get(index);
